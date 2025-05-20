@@ -1,17 +1,30 @@
 import * as S from './styles'
 
-type Props = {
+export type Props = {
   type: 'button' | 'link' // tipo de dado
   title: string // titulo do dado
   to?: string // caminho
   onClick?: () => void // isso permite o recebeimneto de uma função que nao tem argumento e devolver nada
   children: string // texto do botao
+  variant?: 'primary' | 'secondary'
 }
 
-const Button = ({ type, title, to, onClick, children }: Props) => {
+const Button = ({
+  type,
+  title,
+  to,
+  onClick,
+  children,
+  variant = 'primary'
+}: Props) => {
   if (type === 'button') {
     return (
-      <S.ButtonContainer type="button" title={title} onClick={onClick}>
+      <S.ButtonContainer
+        type="button"
+        title={title}
+        onClick={onClick}
+        variant={variant}
+      >
         {children}
       </S.ButtonContainer>
     )
