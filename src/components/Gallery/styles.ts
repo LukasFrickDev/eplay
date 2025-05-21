@@ -3,6 +3,8 @@ import { cores } from '../../styles'
 
 export const Items = styled.ul`
   display: flex;
+  row-gap: 16px;
+  flex-wrap: wrap;
 `
 
 export const Action = styled.div`
