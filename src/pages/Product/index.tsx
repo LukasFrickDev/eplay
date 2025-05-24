@@ -1,15 +1,23 @@
 import { useParams } from 'react-router-dom'
+
 import Hero from '../../components/Hero'
 import Section from '../../components/Section'
 import Gallery from '../../components/Gallery'
+import Loader from '../../components/Loader'
+
 import { useGetGameQuery } from '../../services/api'
 
-const Product = () => {
-  const { id } = useParams()
-  const { data: game } = useGetGameQuery(id!)
+type GameParams = {
+  id: string
+}
 
+const Product = () => {
+  const { id } = useParams() as GameParams
+
+  const { data: game } = useGetGameQuery(id)
+  // Para resolver o warning que dava no id! passamod o useParams() como uma propriedade que criamos chamada GameParams que so tem o tio id: string
   if (!game) {
-    return <h3>Esta Carregando...</h3>
+    return <Loader />
   }
   return (
     <>
